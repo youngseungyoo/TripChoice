@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- servlet-context.xml -->
+	<!-- 스프링 환경 설정 파일 -->
+	
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven />
+
+	<!-- 주석 ctrl+shift+/ -->
+	<!-- 코딩 개발의 편리성을 위해 Dynamic web project 구조와 동일하게 변경한다. -->
+	<!-- /webapp 폴더가 front단의 루트 -->
+	<!-- <resources mapping="/resources/**" location="/resources/" /> -->
+	<default-servlet-handler/>
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the / directory -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	<!-- 
+	어노테이션 방식으로(controller,component,~)객체생성 자동으로 하려면 해당 패키지가 스캔되어야 한다.
+	 -->
+	<context:component-scan base-package="net.utility" />
+	<context:component-scan base-package="kr.co.tripChoice" />
+	<!-- 
+	CommonsMultipartResolver 클래스
+	->폼에서 전송되어온 파일을 읽어서 MultiResolver 객체로 변환
+	 -->
+	<beans:bean id="multipartResolver" 
+	class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></beans:bean>
+	
+	
+	
+</beans:beans>
