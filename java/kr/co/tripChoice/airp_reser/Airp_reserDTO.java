@@ -9,6 +9,49 @@ public class Airp_reserDTO {
 	private String tar_name;
 	private String tar_passcode;
 	
+	private String[] tar_code_list;
+	private String[] ta_code_list;
+	private String[] tar_seat_list;
+	private String[] tu_id_list;
+	private String[] tar_name_list;
+	private String[] tar_passcode_list;
+	
+	public String[] getTar_code_list() {
+		return tar_code_list;
+	}
+	public void setTar_code_list(String[] tar_code_list) {
+		this.tar_code_list = tar_code_list;
+	}
+	public String[] getTa_code_list() {
+		return ta_code_list;
+	}
+	public void setTa_code_list(String[] ta_code_list) {
+		this.ta_code_list = ta_code_list;
+	}
+	public String[] getTar_seat_list() {
+		return tar_seat_list;
+	}
+	public void setTar_seat_list(String[] tar_seat_list) {
+		this.tar_seat_list = tar_seat_list;
+	}
+	public String[] getTu_id_list() {
+		return tu_id_list;
+	}
+	public void setTu_id_list(String[] tu_id_list) {
+		this.tu_id_list = tu_id_list;
+	}
+	public String[] getTar_name_list() {
+		return tar_name_list;
+	}
+	public void setTar_name_list(String[] tar_name_list) {
+		this.tar_name_list = tar_name_list;
+	}
+	public String[] getTar_passcode_list() {
+		return tar_passcode_list;
+	}
+	public void setTar_passcode_list(String[] tar_passcode_list) {
+		this.tar_passcode_list = tar_passcode_list;
+	}
 	public String getTar_code() {
 		return tar_code;
 	}

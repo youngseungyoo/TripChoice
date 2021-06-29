@@ -12,7 +12,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.tripChoice.t_airp.T_airpDTO;
-import net.utility.UploadSaveManager;
 import net.utility.Utility;
 
 @Controller
@@ -25,7 +24,7 @@ public class Airp_reserCont {
 	}
 	
 	 //http://localhost:9090/tripChoice/airp_reser/reser.do
-	 @RequestMapping(value="airp_reser/reser.do", method=RequestMethod.GET)
+	 @RequestMapping(value="reser.do", method=RequestMethod.GET)
 	 public ModelAndView reserForm(String ta_code) {
 		 ModelAndView mav = new ModelAndView();
 		 mav.setViewName("airp_reser/reserForm");
@@ -34,38 +33,48 @@ public class Airp_reserCont {
 		 return mav;
 	 }//create end
 	 
-	 @RequestMapping(value="airp_reser/reser.do",method=RequestMethod.POST)
-	 public ModelAndView reserProc(@ModelAttribute Airp_reserDTO dto,HttpServletRequest req) {
+	 @RequestMapping(value="reser.do",method=RequestMethod.POST)
+	 public ModelAndView reserProc(@ModelAttribute Airp_reserDTO dto, HttpServletRequest req) {
+		 
+		 int cnt=0;
+		 String[] ta_code_list=req.getParameterValues("ta_code");
+		 String[] tu_id_list=req.getParameterValues("tu_id");
+		 String[] tar_seat_list=req.getParameterValues("tar_seat");
+		 String[] tar_name_list=req.getParameterValues("tar_name");
+		 String[] tar_passcode_list=req.getParameterValues("tar_passcode");
+		 
+		 for(int i=0; i<tar_name_list.length;i++) {
+			 cnt=dao.reser(ta_code_list[i],tu_id_list[i],tar_seat_list[i],tar_name_list[i],tar_passcode_list[i]);
+			
+		 }
+		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("airp_reser/msgView");
 		mav.addObject("root", Utility.getRoot());
+		
+		if (cnt == 0) {
+			String msg = "<p>항공권 등록 실패</p>";
+			String img = "<img src='../images/fail.png'>";
+			String link1 = "<input type='button' value='다시시도' onclick='javascript:history.back()'>";
+			String link2 = "<input type='button' value='홈으로' onclick='location.href=\"../index.do\"'>";
+			mav.addObject("msg1", msg);
+			mav.addObject("img", img);
+			mav.addObject("link1", link1);
+			mav.addObject("link2", link2);
+		} else {
+			String msg = "<p>항공권 등록이 완료되었습니다.</p>";
+			String img = "<img src='../images/sound.png'>";
+			String link1 = "<input type='button' value='홈으로' onclick='location.href=\"../index.do\"'>";
+			mav.addObject("msg1", msg);
+			mav.addObject("img", img);
+			mav.addObject("link1", link1);
 
-		 int cnt=dao.reser(dto);
-		 if(cnt==0) {
-			 String msg="<p>항공권 예약 실패</p>";
-			 
-			 String img="<img src='../images/fail.png'>";
-			 String link1="<input type='button' value='다시시도' onclick='javascript:history.back()'>";
-			 String link2="<input type='button' value='홈으로'  onclick='location.href=\"../index.do\"'>";
-			 mav.addObject("msg1", msg);
-			
-			 mav.addObject("img", img);
-			 mav.addObject("link1", link1);
-			 mav.addObject("link2", link2);
+		} // if end
 
-		 }else {
-			 String msg="<p>항공권 예약 성공</p>";
-			 int msg2=cnt;
-			 String img="<img src='../images/sound.png'>";
-			 String link1="<input type='button' value='홈으로'  onclick='location.href=\"../index.do\"'>";
-			 mav.addObject("msg1", msg);
-			 mav.addObject("msg2", msg2);
-			 mav.addObject("img", img);
-			 mav.addObject("link1", link1);
-
-		 }//if end
 		 
 		 return mav;
 		
 	 }//reserProc() end
+	 
+	 
 }

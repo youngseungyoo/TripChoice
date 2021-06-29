@@ -4,10 +4,9 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ include file="../header.jsp"%>
 <body>
-	<div class="title">티켓 예약하기</div>
+	<div class="title" style = "text-align:center">티켓 예약하기</div>
 
-	<div class="content "></div>
-	<table class="text-center">
+	<table class="text-center" style="width:60%; height: 100px; margin: auto; text-align: center;">
 		<tr id="table_title">
 			<th>티켓번호</th>
 			<th>출발지</th>
@@ -27,7 +26,7 @@
 				<td>${dto.ta_fdate}</a></td>
 				<td>${dto.ta_pax}</a></td>
 				<td><input type="button" value="예약"
-					onclick="location.href='../airp_reser/reser.do?ta_code=${dto.ta_code}'">
+					onclick="location.href='reser.do?ta_code=${dto.ta_code}'">
 				</td>
 				<td><input type="button" value="삭제"
 					onclick="location.href='delete.do?ta_code=${dto.ta_code}'">
