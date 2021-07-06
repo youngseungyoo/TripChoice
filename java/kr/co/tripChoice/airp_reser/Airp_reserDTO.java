@@ -8,14 +8,21 @@ public class Airp_reserDTO {
 	private String tu_id;
 	private String tar_name;
 	private String tar_passcode;
-	
+	private String tar_sex;
 	private String[] tar_code_list;
 	private String[] ta_code_list;
 	private String[] tar_seat_list;
 	private String[] tu_id_list;
 	private String[] tar_name_list;
 	private String[] tar_passcode_list;
-	
+	private String[] tar_sex_list;
+
+	public String[] getTar_sex_list() {
+		return tar_sex_list;
+	}
+	public void setTar_sex_list(String[] tar_sex_list) {
+		this.tar_sex_list = tar_sex_list;
+	}
 	public String[] getTar_code_list() {
 		return tar_code_list;
 	}
@@ -51,6 +58,12 @@ public class Airp_reserDTO {
 	}
 	public void setTar_passcode_list(String[] tar_passcode_list) {
 		this.tar_passcode_list = tar_passcode_list;
+	}
+	public String getTar_sex() {
+		return tar_sex;
+	}
+	public void setTar_sex(String tar_sex) {
+		this.tar_sex = tar_sex;
 	}
 	public String getTar_code() {
 		return tar_code;

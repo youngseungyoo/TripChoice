@@ -7,7 +7,7 @@
 <form name="memfrm" id="memfrm" method="post" action="memberProc.do" onsubmit="return memberCheck()"><!-- myscript.js -->
 <span style="color:red; font-weight: bold">* 필수입력</span>
 <br>
-<table class="table">
+<table class="table" boder="0";>
 <tr>
     <th>*아이디</th>
     <td style="text-align: left">

@@ -22,7 +22,7 @@
 </head>
 <body>
 
-	<!-- 메인 카테고리 시작 -->
+<!-- 메인 카테고리 시작 -->
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -37,17 +37,30 @@
 						<ul class="dropdown-menu">
 							<li><a href="<%=request.getContextPath()%>/loginForm.do">로그인</a></li>
 							<li><a href="<%=request.getContextPath()%>/agreement.do">회원가입</a></li>
-							<li><a href="<%=request.getContextPath()%>/ticket.do">항공권 등록 (관리자모드)</a></li>
-							<li><a href="<%=request.getContextPath()%>/list.do">항공권 예약</a></li>
-						</ul></li>
+						</ul>
+					</li>
 					<li><a href="">예약내역</a></li>
 					<li><a href="">장바구니</a></li>
-
+				 	<c:if test="${sessionScope.s_tu_rank =='admin'}">
+					
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">관리자메뉴 <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="<%=request.getContextPath()%>/trip/createForm.do">상품등록</a></li>
+							<li><a href="<%=request.getContextPath()%>/trip/trip_list_admin.do">상품목록</a></li>
+							<li><a href="<%=request.getContextPath()%>/t_hotel/t_hotelForm.do">숙소등록</a></li>
+							<li><a href="<%=request.getContextPath()%>/t_hotel/t_hotel_list_admin.do">숙소목록</a></li>
+							<li><a href="<%=request.getContextPath()%>/t_airp/ticket.do">항공권등록</a></li>
+							<li><a href="<%=request.getContextPath()%>/t_airp/list.do">항공권목록</a></li>
+						</ul></li>
+					</li>
+					</c:if>
+					
 				</ul>
 			</div>
 		</div>
 	</nav>
 	<!-- 메인 카테고리 끝-->
+
 
 
 	<!-- First Container(해외 국내) 시작 -->
@@ -65,26 +78,14 @@
 					data-toggle="dropdown" href="#" style="color: white">국내<span
 						class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">서울(수도권)</a></li>
-						<li><a href="#">강원</a></li>
-						<li><a href="#">충청</a></li>
-						<li><a href="#">전라</a></li>
-						<li><a href="#">경상</a></li>
-						<li><a href="#">제주</a></li>
+						<li><a href="<%=request.getContextPath()%>/trip/trip_list_korea.do">국내전체</a></li>
+						<li><a href="<%=request.getContextPath()%>/trip/trip_list_jeju.do">제주</a></li>
 					</ul></li>
 
 			</ul>
 			<ul class="topright2">
-				<li class=:dropdown><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#" style="color: white">해외<span
-						class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="#">아시아</a></li>
-						<li><a href="#">유럽</a></li>
-						<li><a href="#">북미</a></li>
-						<li><a href="#">남미</a></li>
-						<li><a href="#">아프리카</a></li>
-					</ul></li>
+				<li class=:dropdown><a href="<%=request.getContextPath()%>/trip/trip_list_abroad.do" style="color: white">해외</a>
+
 			</ul>
 
 			<div class="item active">
@@ -406,10 +407,11 @@
 			</div>
 		</div>
 	</div>
-
-
 	<!-- third container 끝 -->
+	
+	
 	<!-- Footer -->
+	<hr>
 	<div class="row text-center">
 		<div class="col-sm-3">
 			<div class="thumbnail2">
@@ -440,7 +442,7 @@
 					<strong>문의사항</strong>
 				</p>
 				<p>언제든지 문의하세요~</p>
-				<a href="index.do" class="btn btn-success">문의사항 바로가기</a>
+				<a href="<%=request.getContextPath()%>/trq/trqList.do" class="btn btn-success">문의사항 바로가기</a>
 			</div>
 		</div>
 		<div class="col-sm-3">

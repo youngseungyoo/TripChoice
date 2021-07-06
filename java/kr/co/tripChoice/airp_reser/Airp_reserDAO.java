@@ -38,8 +38,8 @@ public class Airp_reserDAO {
 		try {
 			con = dbopen.getConnection();
 			sql = new StringBuilder();
-			sql.append(" INSERT INTO airp_reser(ta_code, tar_seat, tu_id, tar_name, tar_passcode, tar_code) ");
-			sql.append(" VALUES (?, ?, ?, ?, ?,?) ");
+			sql.append(" INSERT INTO airp_reser(ta_code, tar_seat, tu_id, tar_name, tar_passcode,tar_code) ");
+			sql.append(" VALUES (?, ?, ?, ?, ?, ?) ");
 			pstmt = con.prepareStatement(sql.toString());
 			
 			pstmt.setString(1, ta_code_list);
@@ -48,7 +48,6 @@ public class Airp_reserDAO {
 			pstmt.setString(4, tar_name_list);
 			pstmt.setString(5, tar_passcode_list);
 			pstmt.setString(6, ta_code_list+tar_seat_list);
-			
 			cnt = pstmt.executeUpdate();
 			
 		} catch (Exception e) {

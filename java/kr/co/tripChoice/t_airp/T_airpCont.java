@@ -24,12 +24,12 @@ public class T_airpCont {
 
 	// 항공권티켓등록폼 호출
 	// http://localhost:9090/tripChoice/t_airp/ticket.do
-	@RequestMapping(value = "ticket.do", method = RequestMethod.GET)
+	@RequestMapping(value = "t_airp/ticket.do", method = RequestMethod.GET)
 	public String ticketForm() {
 		return "t_airp/ticket";
 	}// ticketForm() end
 
-	@RequestMapping(value = "ticket.do", method = RequestMethod.POST)
+	@RequestMapping(value = "t_airp/ticket.do", method = RequestMethod.POST)
 	public ModelAndView ticketProc(@ModelAttribute T_airpDTO dto) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/t_airp/msgView");
@@ -38,7 +38,7 @@ public class T_airpCont {
 			String msg = "<p>항공권 등록 실패</p>";
 			String img = "<img src='../images/fail.png'>";
 			String link1 = "<input type='button' value='다시시도' onclick='javascript:history.back()'>";
-			String link2 = "<input type='button' value='홈으로' onclick='location.href=\"../index.do\"'>";
+			String link2 = "<input type='button' value='홈으로' onclick='location.href=\"./index.do\"'>";
 			mav.addObject("msg1", msg);
 			mav.addObject("img", img);
 			mav.addObject("link1", link1);
@@ -46,7 +46,7 @@ public class T_airpCont {
 		} else {
 			String msg = "<p>항공권 등록이 완료되었습니다.</p>";
 			String img = "<img src='../images/sound.png'>";
-			String link1 = "<input type='button' value='홈으로' onclick='location.href=\"../index.do\"'>";
+			String link1 = "<input type='button' value='홈으로' onclick='location.href=\"./index.do\"'>";
 			mav.addObject("msg1", msg);
 			mav.addObject("img", img);
 			mav.addObject("link1", link1);
@@ -57,9 +57,22 @@ public class T_airpCont {
 
 	}// ticketProc() end
 	
+	// 항공권 검색폼
+	@RequestMapping(value = "t_airp/search.do", method = RequestMethod.POST)
+	public ModelAndView searchProc(@ModelAttribute T_airpDTO dto) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/t_airp/searchlist");
+		 //request 공간에 자료 올리기
+		 mav.addObject("root", Utility.getRoot());// /tripChoice
+		 mav.addObject("list", dao.searchlist(dto));
+		 return mav;
+
+	}// searchlist() end
+
+	
 	// 항공권리스트 호출
 	// http://localhost:9090/tripChoice/t_airp/list.do
-	 @RequestMapping("list.do")
+	 @RequestMapping("t_airp/list.do")
 	 public ModelAndView list() {
 		 ModelAndView mav = new ModelAndView();
 		 mav.setViewName("t_airp/list");
@@ -69,7 +82,7 @@ public class T_airpCont {
 		 return mav;
 	 }//list end
 	 
-	 @RequestMapping(value="delete.do",method=RequestMethod.GET)
+	 @RequestMapping(value="t_airp/delete.do",method=RequestMethod.GET)
 	 public ModelAndView delete(String ta_code) {
 		 ModelAndView mav = new ModelAndView();
 		 mav.setViewName("t_airp/deleteForm");
@@ -80,7 +93,7 @@ public class T_airpCont {
 	 }//delete end
 	 
 	 
-	 @RequestMapping(value="delete.do", method=RequestMethod.POST)
+	 @RequestMapping(value="t_airp/delete.do", method=RequestMethod.POST)
 	 public ModelAndView deleteProc(String ta_code) {
 		 ModelAndView mav = new ModelAndView();
 		 mav.setViewName("t_airp/msgView");
@@ -106,6 +119,17 @@ public class T_airpCont {
 		 
 		return mav;
 	 }//deleteProc() end
+	 
+	 //test.do?ta_code=82-1_KAL30
+	 @RequestMapping(value="t_airp/test.do",method=RequestMethod.GET)
+	 public ModelAndView read(String ta_code) {
+		 ModelAndView mav = new ModelAndView();
+		 mav.setViewName("t_airp/test");
+		 //request 공간에 자료 올리기
+		 mav.addObject("root", Utility.getRoot());// /tripChoice
+		 mav.addObject("dto", dao.read(ta_code));//dao에서 가져온 값을 request영역에 올리기
+		 return mav;
+	 }//test end
 	
 	
 }// class end

@@ -12,7 +12,7 @@
 	</div>
 		<div class='bottom'>
 			<input type='submit' value='삭제 진행'> 
-			<input type='button' value='HOME'  onclick="location.href='${root}/home.do'">
+			<input type='button' value='HOME'  onclick="location.href='${root}/index.do'">
 		</div>
 	</form>
 </body>

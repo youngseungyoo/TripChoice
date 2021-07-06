@@ -1,0 +1,118 @@
+<style>
+  *{margin:0;padding:0;}
+  ul,li{list-style:none;}
+  #slide{height:300px;position:relative;overflow:hidden;}
+  #slide ul{width:400%;height:100%;transition:1s;}
+  #slide ul:after{content:"";display:block;clear:both;}
+  #slide li{float:left;width:25%;height:100%;}
+  #slide li:nth-child(1)
+  #slide li:nth-child(2)
+  #slide li:nth-child(3)
+  #slide li:nth-child(4)
+  #slide input{display:none;}
+  #slide label{display:inline-block;vertical-align:middle;width:10px;height:10px;border:2px solid #666;background:#fff;transition:0.3s;border-radius:50%;cursor:pointer;}
+  #slide .pos{text-align:center;position:absolute;bottom:10px;left:0;width:100%;text-align:center;}
+  #pos1:checked~ul{margin-left:0%;}
+  #pos2:checked~ul{margin-left:-100%;}
+  #pos3:checked~ul{margin-left:-200%;}
+  #pos4:checked~ul{margin-left:-300%;}
+  #pos1:checked~.pos>label:nth-child(1){background:#666;}
+  #pos2:checked~.pos>label:nth-child(2){background:#666;}
+  #pos3:checked~.pos>label:nth-child(3){background:#666;}
+  #pos4:checked~.pos>label:nth-child(4){background:#666;}
+</style>
+
+<div id="slide" style="width: 50%; height: 500px; float: left; align: center;">
+  <input type="radio" name="pos" id="pos1" checked>
+  <input type="radio" name="pos" id="pos2">
+  <input type="radio" name="pos" id="pos3">
+  <ul>
+    <li><img src="./storage/GSBH510_1.jpg" width="100%" height="100%"/></li>
+    <li><img src="./storage/GSBH510_2.jpg" width="100%" height="100%"/></li>
+    <li><img src="./storage/GSBH510_3.jpg" width="100%" height="100%"/></li>
+  </ul>
+</div>
+<div style="width: 600px; height: 600px; float: right; text-align: left;">
+	<br>
+	<h1>하와이 6일 #메리어트 오션뷰 #1일관광+3일자유 #인생샷포인트</h1>
+	<h4> 와이키키 해변이 바로 앞에! 시내와의 접근성도 좋은 호텔입니다. [항공+호텔+반나절 시내관광과 자유일정까지!] 내 입맛에 맞는 나만의 여행 일정을 만들어 보세요.</h4>
+	<hr>
+	<table border="1">
+	<tr>
+		<td width="100px">여행 여정</td>
+		<td>하와이(6) </td>
+	</tr>
+	<tr>
+		<td>미팅 장소</td>
+		<td>김포공항 2층 출발 1시간 전 해당 항공사 키오스크(셀프 체크인)에서 예약번호/성함으로 탑승 수속</td>
+	</tr>	
+	</table>
+	
+</div>
+
+<div style="clear: both;">
+</div>
+
+<div style="float:left; width: 70%;">
+ <ul class="nav nav-tabs">
+    <li class="active" style="width: 200px; text-align: center;"><a data-toggle="tab" href="#home">관광지/식사</a></li>
+    <li style="width: 200px; text-align: center;"><a data-toggle="tab" href="#menu1">일정</a></li>
+    <li style="width: 200px; text-align: center;"><a data-toggle="tab" href="#menu2">약관</a></li>
+    <li style="width: 200px; text-align: center;"><a data-toggle="tab" href="#menu3">참고사항</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active" style="margin-left: 20px;">
+      <h3>관광</h3>
+      <p>▣ 노을과 일출이 아름다운 제주 속 작은 제주 우도<br>
+우도의 노을&쏟아지는 별빛&햇살가득한 우도의아침<br><br>
+▣ 우도 전기차 포함<br>
+우도에서 편안한 이동 하실수 있도록 전기차 포함</p><hr>
+<h3>식사</h3>
+<p>
+▣ 제주 돔베고기정식 ▣ 갈치조림 ▣ 제주물회<br>
+제주에서 꼭 드셔야 하는 음식으로만 엄선하였습니다.</p>
+    </div>
+    <div id="menu1" class="tab-pane fade" style="margin-left: 20px;">
+      <h3>일정</h3>
+      <img src="../trip/thumbnail/k-001.jpg"/>
+    </div>
+    <div id="menu2" class="tab-pane fade" style="margin-left: 20px;">
+      <h3>표준약관</h3><br>
+      <p>
+예약 취소시 수수료에 관한규정 (국외 여행약관 참조)<br>
+
+여행 예약일시부터<br>
+여행 개시 30일 전까지 취소 경우 : 계약금 환불<br>
+여행 개시 20일 전까지 취소 경우 : 여행요금의 10% 배상적용<br>
+여행 개시 10일 전까지 취소 경우 : 여행요금의 15% 배상적용<br>
+여행 개시 08일 전까지 취소 경우 : 여행요금의 20% 배상적용<br>
+여행 개시 01일 전까지 취소 경우 : 여행요금의 30% 배상적용<br>
+여행 개시일 당일 취소시 : 여행요금의 50% 배상적용<br>
+
+※ 근무일(공휴일 및 토,일요일 제외) 및 근무시간(18시까지) 내에 취소요청에 한하여 적용됩니다.<br>
+※ 위의 내용은 국외여행 표준약관에 의거하였으며 소비자피해보상규정’(공정거래위원회 고시)에 따라 배상합니다.<br>
+※ 최저행사인원 미 충족시 계약해제<br>
+- 최저행사인원이 충족되지 아니하여 여행계약을 해제하는 경우 여행출발 7일전까지 여행자에게 통지하여야 합니다.<br>
+- 여행참가자 수 미달로 전항의 기일내 통지를 하지 아니하고 계약을 해제하는 경우 이미 지급받은 계약금 환급 외에<br>
+다음 각 항목에 따라 여행자에게 배상하여야 합니다.<br>
+① 여행출발 1일전까지 통지시 : 여행요금의 30%<br>
+② 여행출발 당일 통지시 : 여행요금의 50%</p>
+    </div>
+    <div id="menu3" class="tab-pane fade" style="margin-left: 20px;">
+      <h3>참고사항</h3><br>
+      <p>1. 예약 시 여권상의 영문이름(항공권 및 호텔 예약), 여권번호(출/입국 절차). 여권 만료기간, 주민등록번호(여행자보험 가입), 연락처(핸드폰 또는 자택/직장)를 알려주시기 바랍니다.<br>
+최초 예약 시 알려주신 영문이름이 실제 여권상 영문이름과 상이할 경우, 항공 탑승 및 호텔숙박이 거절될 수 있으며 당사의 귀책사유가 아님을 알려드립니다.<br><br>
+
+2. 여권 만료일은 출발일 기준으로 6개월 이상 남아있어야 합니다. (여권이 훼손된 경우 출/입국이 불가할 수 있습니다.)<br>
+1회 사용한 단수여권은 재사용이 불가하므로 반드시 재발급 받으시기를 바랍니다. 한국국적이 아닌 경우 담당자에게 별도 문의 바랍니다.<br><br>
+
+3. 유럽에 도착하셔서 입국수속을 하실 때 여권 소지인의 서명 란에 서명(sign)이 안된 여권으로는 입국이 거절되거나 벌금이 부과될 수 있으니, 반드시 확인하시기 바랍니다.<br><br>
+
+4. 유럽여행을 가실 때는 여권의 사증(VISAS) 면이 3장 이상(추가기재 면 제외) 남아있어야 하며, 사증(VISAS) 면이 부족할 경우 출입국이 제한될 수 있으니, 이 점도 주의하셔서 출발 전 반드시 확인하시기 바랍니다.<br><br>
+
+5. 여권과 필요한 경우 비자를 준비하는 것은 전적으로 고객님의 책임입니다. 출입국을 거부당했을 경우 발생하는 비용이나 환불 불가 등에 대해 당사에서 책임을 지지 않음을 알려드립니다.<br>
+</p>
+    </div>
+  </div>
+</div>

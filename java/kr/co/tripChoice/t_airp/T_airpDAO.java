@@ -53,6 +53,48 @@ public class T_airpDAO {
 		}
 		return cnt;
 	}// create() end
+	
+	public ArrayList<T_airpDTO> searchlist(T_airpDTO dto) {
+		int cnt = 0;
+		try {
+			con = dbopen.getConnection();
+			sql = new StringBuilder();
+			sql.append(" SELECT ta_code, ta_dep, ta_arr, ta_pax, ta_sdate, ta_fdate ");
+			sql.append(" FROM t_airp ");
+			sql.append(" WHERE ta_dep = ? AND ta_arr = ? ");
+			sql.append(" ORDER BY ta_sdate ASC ");
+			pstmt = con.prepareStatement(sql.toString());
+			pstmt.setString(1, dto.getTa_dep());
+			pstmt.setString(2, dto.getTa_arr());
+			cnt = pstmt.executeUpdate();
+			
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				list = new ArrayList<T_airpDTO>();
+				do {
+					T_airpDTO dto1 = new T_airpDTO();
+					dto1.setTa_code(rs.getString("ta_code"));
+					dto1.setTa_dep(rs.getString("ta_dep"));
+					dto1.setTa_arr(rs.getString("ta_arr"));
+					dto1.setTa_pax(rs.getInt("ta_pax"));
+					dto1.setTa_sdate(rs.getString("ta_sdate"));
+					dto1.setTa_fdate(rs.getString("ta_fdate"));
+					list.add(dto1);
+				} while (rs.next());
+			} else {
+				list = null;
+			} // if end
+
+		} catch (Exception e) {
+			System.out.println("티켓 목록 실패" + e);
+		} finally {
+			DBClose.close(con, pstmt, rs);
+		} // end
+
+		return list;
+	}// searchlist end
+	
 
 	public ArrayList<T_airpDTO> list() {
 		try {
@@ -108,5 +150,34 @@ public class T_airpDAO {
 		return cnt;
 
 	}// delete end
+	
+    public T_airpDTO read(String ta_code){
+    	T_airpDTO dto=null;
+        try {
+            con=dbopen.getConnection();
+            sql=new StringBuilder();
+            sql.append(" SELECT ta_code, ta_flightnum, ta_pax");
+            sql.append(" FROM t_airp ");
+            sql.append(" WHERE ta_code=?");
+            
+            pstmt=con.prepareStatement(sql.toString());
+            pstmt.setString(1, ta_code);
+            
+            rs=pstmt.executeQuery();
+            if(rs.next()) {
+                  dto=new T_airpDTO();
+                  dto.setTa_code(rs.getString("ta_code"));
+                  dto.setTa_flightnum(rs.getString("ta_flightnum"));
+                  dto.setTa_pax(rs.getInt("ta_pax"));
+            }//end
+            
+        }catch (Exception e) {
+            System.out.println("좌석 불러오기 실패:"+e);
+        }finally {
+            DBClose.close(con, pstmt, rs);
+        }// end
+        return dto;
+    }//read() end
+
 
 }// class end

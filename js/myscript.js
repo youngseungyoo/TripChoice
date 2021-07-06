@@ -258,7 +258,7 @@ function pdsCheck(){ //포토갤러리 유효성 검사
 function airpreserCheck() { //로그인 유효성 검사
 
 	//1)여권번호가 M으로 시작하는 8글자인지 체크
-    var tar_passcode=document.getElementById("tar_passcode").value;
+    var tar_passcode = document.getElementById("tar_passcode").value;
     tar_passcode=tar_passcode.trim();
     if(tar_passcode.length!=8 && tar_passcode.charAt(0)!='M'){
     	alert("여권번호를 M이 포함된 8글자로 입력하세요");
@@ -270,10 +270,38 @@ function airpreserCheck() { //로그인 유효성 검사
 	alert("예약성공");
 }//airpreserCheck() end
 
+function dateCheck() { //도착일이 출발일보다 빠르지 않은지 검사
+   var departure = document.getElementById("tr_departure").value;
+   var arrival = document.getElementById("tr_arrival").value;
+   
+   if(departure.slice(0,4)>arrival.slice(0,4)){
+      alert("도착일이 출발일보다 빠릅니다 다시 설정해주세요");
+      return false;
+   }else if(departure.slice(5,7)>arrival.slice(5,7)){
+      alert("도착일이 출발일보다 빠릅니다 다시 설정해주세요");
+      return false;
+   }else if(departure.slice(8,10)>arrival.slice(8,10)){
+      alert("도착일이 출발일보다 빠릅니다 다시 설정해주세요");
+      return false;
+   }//if end
+   
+   return true;
+}//dateCheck() end
 
 
 
-
+function seatCheck() { //아이디 중복확인
+	//bootstrap 모달창
+	//->부모창과 자식창이 한몸으로 구성되어 있음
+	//->참조 https://www.w3schools.com/bootstrap/bootstrap_modal.asp	
+	
+	//새창만들기
+	//->부모창과 자식창이 별개로 구성되어 있음
+	//->모바일에 기반을 둔 frontend단에서는 사용하지 말것!!
+	//window.open("파일명", "새창이름", "다양한 옵션들")
+	window.open("test.do", "seatcheck", "width=400, height=350");	
+	
+}//seatCheck() end
 
 
 

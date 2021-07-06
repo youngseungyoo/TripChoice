@@ -22,7 +22,7 @@
 </head>
 <body>
 
-	<!-- 메인 카테고리 시작 -->
+<!-- 메인 카테고리 시작 -->
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -37,14 +37,27 @@
 						<ul class="dropdown-menu">
 							<li><a href="<%=request.getContextPath()%>/loginForm.do">로그인</a></li>
 							<li><a href="<%=request.getContextPath()%>/agreement.do">회원가입</a></li>
-							<li><a href="<%=request.getContextPath()%>/ticket.do">항공권 등록 (관리자모드)</a></li>
-							<li><a href="<%=request.getContextPath()%>/list.do">항공권 예약</a></li>
-						</ul></li>
+						</ul>
+					</li>
 					<li><a href="">예약내역</a></li>
 					<li><a href="">장바구니</a></li>
-
+				 	<c:if test="${sessionScope.s_tu_rank =='admin'}">
+					
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">관리자메뉴 <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="<%=request.getContextPath()%>/trip/createForm.do">상품등록</a></li>
+							<li><a href="<%=request.getContextPath()%>/trip/trip_list_admin.do">상품목록</a></li>
+							<li><a href="<%=request.getContextPath()%>/t_hotel/t_hotelForm.do">숙소등록</a></li>
+							<li><a href="<%=request.getContextPath()%>/t_hotel/t_hotel_list_admin.do">숙소목록</a></li>
+							<li><a href="<%=request.getContextPath()%>/t_airp/ticket.do">항공권등록</a></li>
+							<li><a href="<%=request.getContextPath()%>/t_airp/list.do">항공권목록</a></li>
+						</ul></li>
+					</li>
+					</c:if>
+					
 				</ul>
 			</div>
 		</div>
 	</nav>
 	<!-- 메인 카테고리 끝-->
+

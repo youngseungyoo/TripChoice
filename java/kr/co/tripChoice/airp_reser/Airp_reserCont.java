@@ -24,7 +24,7 @@ public class Airp_reserCont {
 	}
 	
 	 //http://localhost:9090/tripChoice/airp_reser/reser.do
-	 @RequestMapping(value="reser.do", method=RequestMethod.GET)
+	 @RequestMapping(value="airp_reser/reser.do", method=RequestMethod.GET)
 	 public ModelAndView reserForm(String ta_code) {
 		 ModelAndView mav = new ModelAndView();
 		 mav.setViewName("airp_reser/reserForm");
@@ -33,7 +33,7 @@ public class Airp_reserCont {
 		 return mav;
 	 }//create end
 	 
-	 @RequestMapping(value="reser.do",method=RequestMethod.POST)
+	 @RequestMapping(value="airp_reser/reser.do",method=RequestMethod.POST)
 	 public ModelAndView reserProc(@ModelAttribute Airp_reserDTO dto, HttpServletRequest req) {
 		 
 		 int cnt=0;
@@ -42,10 +42,8 @@ public class Airp_reserCont {
 		 String[] tar_seat_list=req.getParameterValues("tar_seat");
 		 String[] tar_name_list=req.getParameterValues("tar_name");
 		 String[] tar_passcode_list=req.getParameterValues("tar_passcode");
-		 
-		 for(int i=0; i<tar_name_list.length;i++) {
+		 for(int i=0; i<tu_id_list.length;i++) {
 			 cnt=dao.reser(ta_code_list[i],tu_id_list[i],tar_seat_list[i],tar_name_list[i],tar_passcode_list[i]);
-			
 		 }
 		
 		ModelAndView mav = new ModelAndView();
@@ -53,18 +51,18 @@ public class Airp_reserCont {
 		mav.addObject("root", Utility.getRoot());
 		
 		if (cnt == 0) {
-			String msg = "<p>항공권 등록 실패</p>";
+			String msg = "<p>항공권 예약 실패</p>";
 			String img = "<img src='../images/fail.png'>";
 			String link1 = "<input type='button' value='다시시도' onclick='javascript:history.back()'>";
-			String link2 = "<input type='button' value='홈으로' onclick='location.href=\"../index.do\"'>";
+			String link2 = "<input type='button' value='홈으로' onclick='location.href=\"./index.do\"'>";
 			mav.addObject("msg1", msg);
 			mav.addObject("img", img);
 			mav.addObject("link1", link1);
 			mav.addObject("link2", link2);
 		} else {
-			String msg = "<p>항공권 등록이 완료되었습니다.</p>";
+			String msg = "<p>항공권 예약이 완료되었습니다.</p>";
 			String img = "<img src='../images/sound.png'>";
-			String link1 = "<input type='button' value='홈으로' onclick='location.href=\"../index.do\"'>";
+			String link1 = "<input type='button' value='홈으로' onclick='location.href=\"./index.do\"'>";
 			mav.addObject("msg1", msg);
 			mav.addObject("img", img);
 			mav.addObject("link1", link1);

@@ -14,7 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//서블릿 클래스는 web.xml에 등록하고 사용해야함
+//서블릿클래스는 web.xml에 등록해야함
 public class FileDownload extends javax.servlet.http.HttpServlet {
   // 서블릿 버전, 생략 가능
   static final long serialVersionUID = 1L;
